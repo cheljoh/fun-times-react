@@ -6,10 +6,19 @@ var AllSkills = React.createClass({
     $.getJSON('/api/v1/skills.json', (response) => { this.setState({ skills: response }) });
   },
   render(){
+  var skills = this.state.skills.map((skill) => {
     return(
       <div>
-        <h1>all skills</h1>
+        <h3>{skill.name}</h3>
+        <p>Level: {skill.level}</p>
+        <p>{skill.details}</p>
       </div>
     )
+  });
+  return(
+    <div>
+      {skills}
+    </div>
+  );
   }
 });
